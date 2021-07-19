@@ -10,8 +10,10 @@ import numpy as np
 
 def main():
     # Read the data from CSV file
-    data = pd.read_csv('data/spanish_sentiment.csv', sep=',')
-    print(data.head())
+    sentiments = pd.read_csv('data/sentiments.csv', sep=',')
+    emotions = pd.read_csv('data/emotions.csv', sep=',')
+    print(sentiments.head())
+    print(emotions.head())
 
 
 if __name__ == '__main__':
