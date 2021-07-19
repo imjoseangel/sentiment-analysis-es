@@ -6,6 +6,7 @@ from __future__ import (division, absolute_import, print_function,
 
 import pandas as pd
 import numpy as np
+from pandas.core.indexes import category
 
 
 def main():
