@@ -9,7 +9,9 @@ import numpy as np
 
 
 def main():
-    pass
+    # Read the data from CSV file
+    data = pd.read_csv('data/spanish_sentiment.csv', sep=',')
+    print(data.head())
 
 
 if __name__ == '__main__':
