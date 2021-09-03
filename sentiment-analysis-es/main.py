@@ -7,6 +7,7 @@ from numpy import negative
 
 import pandas as pd
 from sklearn.naive_bayes import MultinomialNB
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -16,9 +17,7 @@ def main():
 
     positive = sentiments[sentiments['polarity'] == 'positive']
     negative = sentiments[sentiments['polarity'] == 'negative']
-
-    print(positive)
-    print(negative)
+    neutral = sentiments[sentiments['polarity'] == 'neutral']
 
 
 if __name__ == '__main__':
