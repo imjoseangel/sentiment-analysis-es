@@ -14,23 +14,27 @@ from numpy import negative
 
 
 def to_lower(words: list) -> list:
-
     return words.lower()
 
 
 def stem_words(words: list) -> list:
-
     stemmer = PorterStemmer()
     return stemmer.stem(words)
 
 
 def break_into_words(words: list) -> list:
-
     return re.findall("[a-zA-Z0-9]+", words)
 
 
 def skip_numeric(words: list) -> list:
     return [word for word in words if not word.isnumeric()]
+
+
+def skip_stop_words(words: list) -> list:
+
+    stopwordspd = pd.read_csv('data/stopwords.csv', sep=',')
+    stopwords = stopwordspd['word'].tolist()
+    return [word for word in words if word not in stopwords]
 
 
 def main():
@@ -44,12 +48,8 @@ def main():
     negative = sentiments[sentiments['polarity'] == 'negative']
     neutral = sentiments[sentiments['polarity'] == 'neutral']
 
-    positivelst = (positive['word'].tolist())
-    negativelst = (negative['word'].tolist())
-    neutrallst = (neutral['word'].tolist())
-
     print(train['sentence'].map(to_lower).map(
-        break_into_words).map(skip_numeric))
+        break_into_words).map(skip_numeric).map(skip_stop_words))
 
 
 if __name__ == '__main__':
